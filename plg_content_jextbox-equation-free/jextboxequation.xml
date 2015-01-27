@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="content" method="upgrade">
+<name>Content - JExtBOX Equation</name>
+<author>Galaa</author>
+<creationDate>2013-04-21</creationDate>
+<copyright>Copyright (C) 2013 Galaa (galaa.mn)</copyright>
+<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+<authorEmail>contact@galaa.mn</authorEmail>
+<authorUrl>www.galaa.mn</authorUrl>
+<version>2.5.0</version>
+<description><![CDATA[<p>This simple free plugin helps to you displaying math equations and figures (PSPicture).</p><p>Visit <a href="http://jextbox.com" target="_blank">www.JExtBOX.com</a> for more advanced version.</p>]]></description>
+<files>
+	<filename plugin="jextboxequation">jextboxequation.php</filename>
+	<filename>index.html</filename>
+	<folder>latex2html5</folder>
+</files>
+<languages folder="language">
+	<language tag="en-GB">en-GB/en-GB.plg_content_jextboxequation.ini</language>
+	<language tag="en-GB">en-GB/en-GB.plg_content_jextboxequation.sys.ini</language>
+</languages>
+<config>
+<fields name="params">
+<fieldset name="basic">
+	<field name="convertonthefly" type="list" default="1" label="JEXTBOXEQUATION_LBL_CONVERTONTHEFLY" description="JEXTBOXEQUATION_DSC_CONVERTONTHEFLY">
+		<option value="1">JEXTBOXEQUATION_OPTION_YES</option>
+		<option value="0">JEXTBOXEQUATION_OPTION_NO</option>
+	</field>
+	<field name="jquery" type="list" default="0" label="JEXTBOXEQUATION_LBL_JQUERY" description="JEXTBOXEQUATION_DSC_JQUERY">
+		<option value="2">JEXTBOXEQUATION_OPTION_CDN</option>
+		<option value="1">JEXTBOXEQUATION_OPTION_LOCAL</option>
+		<option value="0">JEXTBOXEQUATION_OPTION_NO</option>
+	</field>
+	<field name="jqueryversion" type="text" default="1.11.1" label="JEXTBOXEQUATION_LBL_JQUERY_VERSION" description="JEXTBOXEQUATION_DSC_JQUERY_VERSION" />
+	<field name="localjquery" type="text" default="" label="JEXTBOXEQUATION_LBL_LOCALJQUERY" description="JEXTBOXEQUATION_DSC_LOCALJQUERY" />
+	<field name="noconflict" type="list" default="0" label="JEXTBOXEQUATION_LBL_NOCONFLICT" description="JEXTBOXEQUATION_DSC_NOCONFLICT">
+		<option value="1">JEXTBOXEQUATION_OPTION_YES</option>
+		<option value="0">JEXTBOXEQUATION_OPTION_NO</option>
+	</field>
+</fieldset>
+</fields>
+</config>
+</extension>
