@@ -38,12 +38,9 @@ class plgContentJExtBOXEquation extends JPlugin
 			// MathJax configuration
 			$doc->addScriptDeclaration('MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "AMS"} }, showMathMenu: false, messageStyle: "none" });', 'text/x-mathjax-config');
 			// MathJax
-//			if(JFactory::getApplication()->isSSLConnection()){ // works in Joomla 3.2
-			if(!empty($_SERVER['HTTPS'])){  // for Joomla 2.5
-				$doc->addScript('https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML');
-			}else{
-				$doc->addScript('http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML');
-			}
+//			JFactory::getApplication()->isSSLConnection() // works in Joomla 3.2
+//			!empty($_SERVER['HTTPS'] // for Joomla 2.5
+			$doc->addScript('http'.(!empty($_SERVER['HTTPS']) ? 's' : '').'://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML');
 		}
 		// converting, on the fly
 		if($this->params->get('convertonthefly', 1)){

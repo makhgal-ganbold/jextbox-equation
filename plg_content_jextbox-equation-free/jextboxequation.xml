@@ -7,7 +7,7 @@
 <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
 <authorEmail>contact@galaa.mn</authorEmail>
 <authorUrl>www.galaa.mn</authorUrl>
-<version>2.5.0</version>
+<version>2.6.0</version>
 <description><![CDATA[<p>This simple free plugin helps to you displaying math equations and figures (PSPicture).</p><p>Visit <a href="http://jextbox.com" target="_blank">www.JExtBOX.com</a> for more advanced version.</p>]]></description>
 <files>
 	<filename plugin="jextboxequation">jextboxequation.php</filename>
