@@ -7,7 +7,7 @@
 * @authorEmail   contact@galaa.mn
 * @publisher     JExtBOX - BOX of Joomla Extensions
 * @publisherURL  www.jextbox.com
-* @copyright     Copyright (C) 2013 Galaa
+* @copyright     Copyright (C) 2013-2016 Galaa
 * @license       This extension in released under the GNU/GPL License - http://www.gnu.org/copyleft/gpl.html
 */
 
@@ -38,17 +38,12 @@ class plgContentJExtBOXEquation extends JPlugin
 			// MathJax configuration
 			$doc->addScriptDeclaration('MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "AMS"} }, showMathMenu: false, messageStyle: "none" });', 'text/x-mathjax-config');
 			// MathJax
-//			JFactory::getApplication()->isSSLConnection() // works in Joomla 3.2
-//			!empty($_SERVER['HTTPS'] // for Joomla 2.5
-			$doc->addScript('http'.(!empty($_SERVER['HTTPS']) ? 's' : '').'://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML');
+			$doc->addScript('http'.(JFactory::getApplication()->isSSLConnection() ? 's' : '').'://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML');
 		}
-		// converting, on the fly
-		if($this->params->get('convertonthefly', 1)){
-			// $$
-			$article->text = preg_replace('/\$\$([^\$]+)\$\$/', '\[$1\]', $article->text);
-			// $
-			$article->text = preg_replace('/\$([^\$]+)\$/', '\($1\)', $article->text);
-		}
+		// converting line equation $$
+		$article->text = preg_replace('/\$\$([^\$]+)\$\$/', '\[$1\]', $article->text);
+		// converting inline equation $
+		$article->text = preg_replace('/\$([^\$]+)\$/', '\($1\)', $article->text);
 		// LaTeX2HTML5 (pspicture) -- MathJax must be loaded
 		if(strpos($article->text, '\begin{pspicture}') !== false){ // checking for existing pspicture
 			// preparing all PSPictures for LaTeX2HTML5
@@ -60,30 +55,12 @@ class plgContentJExtBOXEquation extends JPlugin
 			}
 			if($this->first_time_executing['latex2html5']){
 				$this->first_time_executing['latex2html5'] = false;
-				// jQuery
-				switch($this->params->get('jquery', 0)){
-					case 2:
-						$doc->addScript('//ajax.googleapis.com/ajax/libs/jquery/'.$this->params->get('jqueryversion', '1.11.1').'/jquery.min.js');
-						break;
-					case 1:
-						$doc->addScript($this->params->get('localjquery', '//ajax.googleapis.com/ajax/libs/jquery/'.$this->params->get('jqueryversion', '1.11.1').'/jquery.min.js'));
-						break;
-					default:
-						break;
-				}
 				// CSS for LaTeX2HTML5
 				$doc->addStyleSheet('plugins/content/jextboxequation/latex2html5/latex2html5.min.css');
 				// LaTeX2HTML5 javascript library
 				$doc->addScript('plugins/content/jextboxequation/latex2html5/latex2html5.min.js');
-				// jQuery.noConflict
-				if($this->params->get('noconflict', 0) === 1){
-					$doc->addScriptDeclaration('jQuery.noConflict()');
-					$script = 'jQuery("body").latex();';
-				}else{
-					$script = '$("body").latex();';
-				}
 				// adding launcher of LaTeX2HTML5
-				$article->text .= '<script type="text/javascript">'.$script.'</script>';
+				$article->text .= '<script type="text/javascript">$("body").latex();</script>';
 			}
 		}
 		return true;
