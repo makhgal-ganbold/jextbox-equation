@@ -4,10 +4,9 @@
 * @extension     JExtBOX Equation
 * @author        Galaa
 * @authorUrl     www.galaa.mn
-* @authorEmail   contact@galaa.mn
 * @publisher     JExtBOX - BOX of Joomla Extensions
 * @publisherURL  www.jextbox.com
-* @copyright     Copyright (C) 2013-2016 Galaa
+* @copyright     Copyright (C) 2013-2018 Galaa
 * @license       This extension in released under the GNU/GPL License - http://www.gnu.org/copyleft/gpl.html
 */
 

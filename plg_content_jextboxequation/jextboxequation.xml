@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<extension version="3.0" type="plugin" group="content" method="upgrade">
+	<name>Content - JExtBOX Equation</name>
+	<author>Galaa</author>
+	<creationDate>2013-04-21</creationDate>
+	<copyright>Copyright (C) 2013-2018 Galaa (www.galaa.mn)</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorUrl>www.galaa.mn</authorUrl>
+	<version>2.8.0</version>
+	<description>
+		<![CDATA[
+			<p>This simple free plugin helps to display math equations (LaTeX) and figures (PSPicture).</p>
+			<p>Visit <a href="http://jextbox.com" target="_blank">www.JExtBOX.com</a> for a more advanced premium version:</p>
+			<ol>
+				<li>All front-end components and modules support</li>
+				<li>Rendering equations which are added to DOM by AJAX</li>
+				<li>An editor button and a popup modal window for inserting math easely</li>
+				<li>Live preview before inserting an equation with the popup modal window</li>
+				<li>Skips HTML tags: pre & code</li>
+				<li>Clean-up spaces after line equations</li>
+				<li>MathJax version selection for CDN, local installation support, fallback to local installation, custom configuration of MathJax</li>
+			</ol>
+		]]>
+	</description>
+	<files>
+		<filename plugin="jextboxequation">jextboxequation.php</filename>
+		<filename>index.html</filename>
+		<folder>latex2html5</folder>
+	</files>
+	<scriptfile>script.php</scriptfile>
+	<config>
+		<fields name="params">
+			<fieldset name="config" label="Configuration">
+				<field
+					name="mathjax-version"
+					type="text"
+					default="2.7.1"
+					label="MathJax version"
+					description=""
+				/>
+			</fieldset>
+		</fields>
+		<fields name="params">
+			<fieldset name="payment" label="Payment Information">
+				<field
+					name="paymentid"
+					type="password"
+					default=""
+					label="Payment ID"
+					description="Payment ID from www.JExtBOX.com. It is used for upgrading to the premium version."
+				/>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

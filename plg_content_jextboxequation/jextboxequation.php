@@ -4,10 +4,9 @@
 * @extension     JExtBOX Equation
 * @author        Galaa
 * @authorUrl     www.galaa.mn
-* @authorEmail   contact@galaa.mn
 * @publisher     JExtBOX - BOX of Joomla Extensions
 * @publisherURL  www.jextbox.com
-* @copyright     Copyright (C) 2013-2016 Galaa
+* @copyright     Copyright (C) 2013-2018 Galaa
 * @license       This extension in released under the GNU/GPL License - http://www.gnu.org/copyleft/gpl.html
 */
 
@@ -38,7 +37,7 @@ class plgContentJExtBOXEquation extends JPlugin
 			// MathJax configuration
 			$doc->addScriptDeclaration('MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "AMS"} }, showMathMenu: false, messageStyle: "none" });', 'text/x-mathjax-config');
 			// MathJax
-			$doc->addScript('http'.(JFactory::getApplication()->isSSLConnection() ? 's' : '').'://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML');
+			$doc->addScript('http'.(JFactory::getApplication()->isSSLConnection() ? 's' : '').'://cdnjs.cloudflare.com/ajax/libs/mathjax/'.$this->params->get('mathjax-version', '').'/MathJax.js?config=TeX-MML-AM_CHTML');
 		}
 		// converting line equation $$
 		$article->text = preg_replace('/\$\$([^\$]+)\$\$/', '\[$1\]', $article->text);
