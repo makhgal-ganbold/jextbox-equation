@@ -5,7 +5,7 @@
  * @package     Installer - JExtBOX Equation
  * @author      Galaa
  * @publisher   JExtBOX.com - BOX of Joomla Extensions (www.jextbox.com)
- * @copyright   Copyright (C) 2017-2018 Galaa
+ * @copyright   Copyright (C) 2017-2021 Galaa
  * @authorUrl   www.galaa.mn
  * @license     This extension in released under the GNU/GPL License - http://www.gnu.org/copyleft/gpl.html
  *
@@ -42,7 +42,7 @@ class plgInstallerJExtBOXEquation extends JPlugin
 		$paymentid = $params->get('paymentid', '');
 		if (empty($paymentid))
 		{
-			JFactory::getApplication()->enqueueMessage('Payment ID in not entered for the extension JExtBOX Equation.', 'error');
+			JFactory::getApplication()->enqueueMessage('Payment ID is not entered for the extension JExtBOX Equation.', 'error');
 			return false;
 		}
 		$headers['payment-id'] = $paymentid;
