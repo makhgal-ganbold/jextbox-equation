@@ -41,7 +41,12 @@ class plgContentJExtBOXEquation extends JPlugin
 			// MathJax configuration
 			$doc->addScriptDeclaration('MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "AMS"} }, showMathMenu: false, messageStyle: "none" });', 'text/x-mathjax-config');
 			// MathJax
-			$doc->addScript('http'.(JFactory::getApplication()->isSSLConnection() ? 's' : '').'://cdnjs.cloudflare.com/ajax/libs/mathjax/'.$this->params->get('mathjax-version', '2.7.7').'/MathJax.js?config=TeX-MML-AM_CHTML');
+			$version = $this->params->get('mathjax-version', '2.7.7');
+			if (!preg_match('/^2\.[0-9]+\.[0-9]+$/', $version))
+			{
+				$version = '2.7.7';
+			}
+			$doc->addScript('//cdnjs.cloudflare.com/ajax/libs/mathjax/'.$version.'/MathJax.js?config=TeX-MML-AM_CHTML');
 		}
 		// converting line equation $$
 		$article->text = preg_replace('/\$\$([^\$]+)\$\$/', '\[$1\]', $article->text);

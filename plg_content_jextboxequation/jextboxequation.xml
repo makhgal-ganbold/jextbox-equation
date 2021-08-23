@@ -36,7 +36,7 @@
 					type="text"
 					default="2.7.7"
 					label="MathJax version"
-					description=""
+					description="This free light plugin supports only the stable version 2 of MathJax. The parameter value should be formatted as '2.#.#' (no quotation marks)."
 				/>
 			</fieldset>
 		</fields>
@@ -46,8 +46,8 @@
 					name="paymentid"
 					type="password"
 					default=""
-					label="Payment ID"
-					description="Payment ID from www.JExtBOX.com. It is used for upgrading to the paid full version."
+					label="Payment or Invoice ID"
+					description="Payment or Invoice ID from www.JExtBOX.com. It is used for upgrading to the paid full version."
 				/>
 			</fieldset>
 		</fields>
