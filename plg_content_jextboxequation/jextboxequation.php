@@ -20,24 +20,16 @@ jimport( 'joomla.html.parameter' );
 class plgContentJExtBOXEquation extends JPlugin
 {
 
-	private $first_time_executing = array
-	(
-		'mathjax' => true,
-		'latex2html5' => true
-	);
-
 	function onContentPrepare($context, &$article, &$params, $limitstart=0)
 	{
 
 		if (strpos($article->text, '$$') === false && strpos($article->text, '\[') === false && strpos($article->text, '$') === false && strpos($article->text, '\(') === false && strpos($article->text, '\begin{eq') === false && strpos($article->text, '\begin{pspicture}') === false)
-		{
 			return false;
-		}
-		if ($this->first_time_executing['mathjax'])
+		$doc = JFactory::getDocument();
+		$app = JFactory::getApplication();
+		if (is_null($app->input->get('jextbox_mathjax')))
 		{
-			$this->first_time_executing['mathjax'] = false;
-			// Document
-			$doc = JFactory::getDocument();
+			$app->input->set('jextbox_mathjax', 'loaded');
 			// MathJax configuration
 			$doc->addScriptDeclaration('MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "AMS"} }, showMathMenu: false, messageStyle: "none" });', 'text/x-mathjax-config');
 			// MathJax
@@ -61,17 +53,17 @@ class plgContentJExtBOXEquation extends JPlugin
 			{
 				$replace = preg_replace('/<br ?\/?>/i', "\r\n", $pspicture);
 				$replace = str_replace('&gt;', '>', $replace);
-				$article->text = str_replace($pspicture, '<script type="tex/latex">'.$replace.'</script>', $article->text);
+				$article->text = str_replace($pspicture, '<script type="text/latex">'.$replace.'</script>', $article->text);
 			}
-			if ($this->first_time_executing['latex2html5'])
+			if (is_null($app->input->get('jextbox_latex2html5')))
 			{
-				$this->first_time_executing['latex2html5'] = false;
+				$app->input->set('jextbox_latex2html5', 'loaded');
 				// CSS for LaTeX2HTML5
-				$doc->addStyleSheet('plugins/content/jextboxequation/latex2html5/latex2html5.min.css');
+				$doc->addStyleSheet('plugins/content/jextboxequation/latex2html5/latex2js.css');
 				// LaTeX2HTML5 javascript library
-				$doc->addScript('plugins/content/jextboxequation/latex2html5/latex2html5.min.js');
+				$doc->addScript('plugins/content/jextboxequation/latex2html5/latex2html5.bundle.js');
 				// adding launcher of LaTeX2HTML5
-				$article->text .= '<script type="text/javascript">$("body").latex();</script>';
+				$doc->addScriptDeclaration('document.addEventListener("DOMContentLoaded",function(){LaTeX2HTML5.init();});');
 			}
 		}
 		return true;
