@@ -2,16 +2,16 @@
 
 /**
 * @extension     JExtBOX Equation
-* @author        Galaa
-* @authorUrl     www.galaa.mn
 * @publisher     JExtBOX - BOX of Joomla Extensions
 * @publisherURL  www.jextbox.com
-* @copyright     Copyright (C) 2013-2018 Galaa
-* @license       This extension in released under the GNU/GPL License - http://www.gnu.org/copyleft/gpl.html
+* @author        Galaa
+* @authorUrl     www.galaa.net
+* @copyright     Copyright (C) 2013-2023 Galaa
+* @license       GNU/GPL License - https://www.gnu.org/licenses/gpl.html
 */
 
 // No direct access
-defined( '_JEXEC' ) or die( 'Restricted access' );
+defined('_JEXEC') or die('Restricted access');
 
 class PlgContentJExtBOXEquationInstallerScript
 {
@@ -27,7 +27,7 @@ class PlgContentJExtBOXEquationInstallerScript
 	{
 
 		// Enable plugin
-		$db	= JFactory::getDbo();
+		$db	= Joomla\CMS\Factory::getDbo();
 		$query = $db->getQuery(true);
 		$query
 			->update('#__extensions')

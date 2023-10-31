@@ -2,22 +2,18 @@
 
 /**
 * @extension     JExtBOX Equation
-* @author        Galaa
-* @authorUrl     www.galaa.mn
 * @publisher     JExtBOX - BOX of Joomla Extensions
 * @publisherURL  www.jextbox.com
-* @copyright     Copyright (C) 2013-2021 Galaa
-* @license       This extension in released under the GNU/GPL License - http://www.gnu.org/copyleft/gpl.html
+* @author        Galaa
+* @authorUrl     www.galaa.net
+* @copyright     Copyright (C) 2013-2023 Galaa
+* @license       GNU/GPL License - https://www.gnu.org/licenses/gpl.html
 */
 
 // No direct access
-defined( '_JEXEC' ) or die( 'Restricted access' );
+defined('_JEXEC') or die('Restricted access');
 
-// Import library dependencies
-jimport( 'joomla.plugin.plugin' );
-jimport( 'joomla.html.parameter' );
-
-class plgContentJExtBOXEquation extends JPlugin
+class plgContentJExtBOXEquation extends Joomla\CMS\Plugin\CMSPlugin
 {
 
 	function onContentPrepare($context, &$article, &$params, $limitstart=0)
@@ -25,20 +21,15 @@ class plgContentJExtBOXEquation extends JPlugin
 
 		if (strpos($article->text, '$$') === false && strpos($article->text, '\[') === false && strpos($article->text, '$') === false && strpos($article->text, '\(') === false && strpos($article->text, '\begin{eq') === false && strpos($article->text, '\begin{pspicture}') === false)
 			return false;
-		$doc = JFactory::getDocument();
-		$app = JFactory::getApplication();
+		$doc = Joomla\CMS\Factory::getDocument();
+		$app = Joomla\CMS\Factory::getApplication();
 		if (is_null($app->input->get('jextbox_mathjax')))
 		{
 			$app->input->set('jextbox_mathjax', 'loaded');
 			// MathJax configuration
-			$doc->addScriptDeclaration('MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "AMS"} }, showMathMenu: false, messageStyle: "none" });', 'text/x-mathjax-config');
+			$doc->addScriptDeclaration('MathJax.Hub.Config({ TeX: { extensions: ["autoload-all.js"], equationNumbers: {autoNumber: "AMS"} }, showMathMenu: false, messageStyle: "none" });');
 			// MathJax
-			$version = $this->params->get('mathjax-version', '2.7.7');
-			if (!preg_match('/^2\.[0-9]+\.[0-9]+$/', $version))
-			{
-				$version = '2.7.7';
-			}
-			$doc->addScript('//cdnjs.cloudflare.com/ajax/libs/mathjax/'.$version.'/MathJax.js?config=TeX-MML-AM_CHTML');
+			$doc->addScript('https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-MML-AM_CHTML', 'text/javascript', false, true);
 		}
 		// converting line equation $$
 		$article->text = preg_replace('/\$\$([^\$]+)\$\$/', '\[$1\]', $article->text);

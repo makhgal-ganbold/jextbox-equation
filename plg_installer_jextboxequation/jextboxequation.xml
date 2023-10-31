@@ -3,11 +3,11 @@
 <name>Installer - JExtBOX Equation</name>
 <author>Galaa</author>
 <creationDate>2017-03-28</creationDate>
-<copyright>Copyright (C) 2017-2021 Galaa (www.galaa.mn)</copyright>
-<license>GNU/GPL License - http://www.gnu.org/copyleft/gpl.html</license>
-<authorUrl>www.galaa.mn/</authorUrl>
-<version>2.8.1</version>
-<description>The update installer plugin for the extension JExtBOX Equation. Copyright (C) 2017-2018 Galaa. Author URL http://galaa.mn, publisher http://JExtBOX.com - BOX of Joomla Extensions.</description>
+<copyright>Copyright (C) 2017-2023 Galaa</copyright>
+<license>GNU/GPL License - https://www.gnu.org/licenses/gpl.html</license>
+<authorUrl>www.galaa.net</authorUrl>
+<version>2.13.0</version>
+<description>The update installer plugin for the extension JExtBOX Equation. Copyright (C) 2017-2023 Galaa. Author URL www.galaa.net, publisher www.JExtBOX.com - BOX of Joomla Extensions.</description>
 <files>
 	<filename plugin="jextboxequation">jextboxequation.php</filename>
 	<filename>index.html</filename>

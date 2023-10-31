@@ -3,11 +3,11 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * 
  * @package     Installer - JExtBOX Equation
- * @author      Galaa
  * @publisher   JExtBOX.com - BOX of Joomla Extensions (www.jextbox.com)
- * @copyright   Copyright (C) 2017-2018 Galaa
- * @authorUrl   www.galaa.mn
- * @license     This extension in released under the GNU/GPL License - http://www.gnu.org/copyleft/gpl.html
+ * @author      Galaa
+ * @copyright   Copyright (C) 2017-2023 Galaa
+ * @authorUrl   www.galaa.net
+ * @license     GNU/GPL License - https://www.gnu.org/licenses/gpl.html
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
@@ -28,7 +28,7 @@ class plgInstallerJExtBOXEquationInstallerScript
 	{
 
 		// Enable plugin
-		$db	= JFactory::getDbo();
+		$db	= Joomla\CMS\Factory::getDbo();
 		$query = $db->getQuery(true);
 		$query
 			->update('#__extensions')
