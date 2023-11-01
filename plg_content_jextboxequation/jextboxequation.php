@@ -29,7 +29,7 @@ class plgContentJExtBOXEquation extends Joomla\CMS\Plugin\CMSPlugin
 			// MathJax configuration
 			$doc->addScriptDeclaration('MathJax.Hub.Config({ TeX: { extensions: ["autoload-all.js"], equationNumbers: {autoNumber: "AMS"} }, showMathMenu: false, messageStyle: "none" });');
 			// MathJax
-			$doc->addScript('https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-MML-AM_CHTML', 'text/javascript', false, true);
+			$doc->addScript('https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-MML-AM_CHTML', 'text/javascript', false, false);
 		}
 		// converting line equation $$
 		$article->text = preg_replace('/\$\$([^\$]+)\$\$/', '\[$1\]', $article->text);
@@ -52,7 +52,7 @@ class plgContentJExtBOXEquation extends Joomla\CMS\Plugin\CMSPlugin
 				// CSS for LaTeX2HTML5
 				$doc->addStyleSheet('plugins/content/jextboxequation/latex2html5/latex2js.css');
 				// LaTeX2HTML5 javascript library
-				$doc->addScript('plugins/content/jextboxequation/latex2html5/latex2html5.bundle.js');
+				$doc->addScript('plugins/content/jextboxequation/latex2html5/latex2html5.bundle.js', false, false);
 				// adding launcher of LaTeX2HTML5
 				$doc->addScriptDeclaration('document.addEventListener("DOMContentLoaded",function(){LaTeX2HTML5.init();});');
 			}
