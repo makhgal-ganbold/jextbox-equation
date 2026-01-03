@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension version="3.2.3" type="plugin" group="installer" method="upgrade">
-<name>Installer - JExtBOX Equation</name>
-<author>Galaa</author>
-<creationDate>2017-03-28</creationDate>
-<copyright>Copyright (C) 2017-2023 Galaa</copyright>
-<license>GNU/GPL License - https://www.gnu.org/licenses/gpl.html</license>
-<authorUrl>www.galaa.net</authorUrl>
-<version>2.13.0</version>
-<description>The update installer plugin for the extension JExtBOX Equation. Copyright (C) 2017-2023 Galaa. Author URL www.galaa.net, publisher www.JExtBOX.com - BOX of Joomla Extensions.</description>
-<files>
-	<filename plugin="jextboxequation">jextboxequation.php</filename>
-	<filename>index.html</filename>
-</files>
-<scriptfile>script.php</scriptfile>
+<extension type="plugin" group="installer" method="upgrade">
+	<name>Installer - JExtBOX Equation</name>
+	<author>Makhgal Ganbold</author>
+	<creationDate>2017-03-28</creationDate>
+	<copyright>Copyright (C) 2017-2026 Makhgal Ganbold</copyright>
+	<license>GNU/GPL License - https://www.gnu.org/licenses/gpl.html</license>
+	<authorUrl>www.galaa.net</authorUrl>
+	<version>3.0.0</version>
+	<description>The update installer plugin for the JExtBOX Equation extension.</description>
+	<namespace path="src">Joomla\Plugin\Installer\JExtBOXEquation</namespace>
+	<files>
+		<folder plugin="jextboxequation">services</folder>
+		<folder>src</folder>
+	</files>
+	<scriptfile>script.php</scriptfile>
 </extension>
