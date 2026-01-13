@@ -16,13 +16,11 @@
 				<li>Renders equations which are added to the DOM by AJAX</li>
 				<li>An editor button and a pop-up modal window for inserting math easily</li>
 				<li>Live preview before inserting an equation with the pop-up modal window</li>
-				<li>Skips HTML tags inside pre and code</li>
-				<li>Clean up horizontal spaces at the beginning of each line after the line equations</li>
 				<li>MathJax version selection for CDN, local installation support, fallback to local installation, custom configuration of MathJax</li>
 			</ol>
 		]]>
 	</description>
-	<namespace path="src">Joomla\Plugin\Content\JExtBOXEquation</namespace>
+	<namespace path="src">JExtBOX\Plugin\Content\JExtBOXEquation</namespace>
 	<files>
 		<folder plugin="jextboxequation">services</folder>
 		<folder>src</folder>

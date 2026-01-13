@@ -17,7 +17,7 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\DI\Container;
 use Joomla\DI\ServiceProviderInterface;
-use Joomla\Plugin\Content\JExtBOXEquation\Extension\JExtBOXEquation;
+use JExtBOX\Plugin\Content\JExtBOXEquation\Extension\JExtBOXEquation;
 
 return new class () implements ServiceProviderInterface {
 

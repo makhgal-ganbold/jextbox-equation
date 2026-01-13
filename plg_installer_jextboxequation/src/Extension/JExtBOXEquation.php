@@ -10,7 +10,7 @@
 * @license       GNU/GPL License - https://www.gnu.org/licenses/gpl.html
 */
 
-namespace Joomla\Plugin\Installer\JExtBOXEquation\Extension;
+namespace JExtBOX\Plugin\Installer\JExtBOXEquation\Extension;
 
 defined('_JEXEC') or die;
 
