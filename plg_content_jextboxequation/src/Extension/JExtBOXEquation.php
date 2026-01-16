@@ -60,60 +60,12 @@ final class JExtBOXEquation extends CMSPlugin implements SubscriberInterface
 		$app = Factory::getApplication();
 		$wa  = $doc->getWebAssetManager();
 
-		if (is_null($app->input->get('jextbox_mathjax'))) {
-			$app->input->set('jextbox_mathjax', 'loaded');
-			$wa->addInlineStyle('
-				mjx-container:focus, mjx-container * {
-					outline: none !important; 
-					-webkit-tap-highlight-color: transparent;
-				}
-				mjx-container {
-					cursor: default;
-					-webkit-touch-callout: none;
-				}
-			');
-			$wa->addInlineScript('
-				window.MathJax = {
-					tex: {
-						tags: "ams",
-						autoload: {
-							color: [],
-							colorv2: ["color"]
-						},
-						packages: {"[+]": ["noerrors"]}
-					},
-					options: {
-						enableTabOrder: false,
-						enableMenu: false,
-						renderActions: {
-							addMenu: []
-						},
-						ignoreHtmlClass: "tex2jax_ignore",
-						processHtmlClass: "tex2jax_process"
-					},
-					loader: {
-						load: ["input/asciimath", "[tex]/noerrors"]
-					},
-					startup: {
-						pageReady() {
-							return MathJax.startup.defaultPageReady().then(function () {
-								document.querySelectorAll("mjx-container").forEach(function(node) {
-									node.setAttribute("tabindex", "-1");
-									node.style.outline = "none";
-									node.style.pointerEvents = "none";
-								});
-							});
-						}
-					}
-				};
-			');
-			$wa->registerAndUseScript(
-				'plg_jextbox_mathjax',
-				'https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js',
-				[],
-				['defer' => true]
-			);
+		$registry = $wa->getRegistry();
+		if (!$registry->exists('style', 'latex2js.css')) {
+			$registry->addExtensionRegistryFile('plg_content_jextboxequation');
 		}
+
+		$wa->useStyle('mathjax4.custom.css')->useScript('mathjax4')->useScript('mathjax4.init');
 
 		$article->text = preg_replace('/\$\$([^\$]+)\$\$/', '\[$1\]', $article->text);
 		$article->text = preg_replace('/\$([^\$]+)\$/', '\($1\)', $article->text);
@@ -125,22 +77,7 @@ final class JExtBOXEquation extends CMSPlugin implements SubscriberInterface
 				$replace = str_replace('&gt;', '>', $replace);
 				$article->text = str_replace($pspicture, '<script type="text/latex">' . $replace . '</script>', $article->text);
 			}
-			if (is_null($app->input->get('jextbox_latex2html5'))) {
-				$app->input->set('jextbox_latex2html5', 'loaded');
-				$wa = $doc->getWebAssetManager();
-				$pluginBaseUrl = Uri::root(true) . '/plugins/content/jextboxequation/latex2html5/';
-				$wa->registerAndUseStyle(
-					'plg_content_jextbox_latex2js',
-					$pluginBaseUrl . 'latex2js.css'
-				);
-				$wa->registerAndUseScript(
-					'plg_content_jextbox_latex2html5',
-					$pluginBaseUrl . 'latex2html5.bundle.js',
-					[],
-					['defer' => true]
-				);
-				$wa->addInlineScript('document.addEventListener("DOMContentLoaded", function() { if(typeof LaTeX2HTML5 !== "undefined") LaTeX2HTML5.init(); });');
-			}
+			$wa->useStyle('latex2js.css')->useScript('latex2html5.bundle')->useScript('latex2html5.init');
 		}
 
 	}

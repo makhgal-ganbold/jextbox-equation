@@ -6,7 +6,7 @@
 	<copyright>Copyright (C) 2013-2026 Makhgal Ganbold</copyright>
 	<license>GNU/GPL License - https://www.gnu.org/licenses/gpl.html</license>
 	<authorUrl>www.galaa.net</authorUrl>
-	<version>3.0.0</version>
+	<version>3.1.0</version>
 	<description>
 		<![CDATA[
 			<p>This free light plugin helps to display math equations (LaTeX) and figures (PSPicture).</p>
@@ -24,7 +24,12 @@
 	<files>
 		<folder plugin="jextboxequation">services</folder>
 		<folder>src</folder>
-		<folder>latex2html5</folder>
 	</files>
+	<media destination="plg_content_jextboxequation" folder="media">
+		<filename>joomla.asset.json</filename>
+		<folder>css</folder>
+		<folder>js</folder>
+		<folder>latex2html5</folder>
+	</media>
 	<scriptfile>script.php</scriptfile>
 </extension>

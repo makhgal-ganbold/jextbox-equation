@@ -1,0 +1,53 @@
+{
+	"$schema": "https://developer.joomla.org/schemas/json-asset.schema.json",
+	"name": "plg_content_jextboxequation",
+	"version": "3.1.0",
+	"assets": [
+		{
+			"name": "mathjax4.custom.css",
+			"type": "style",
+			"uri": "media/plg_content_jextboxequation/css/mathjax4.css"
+		},
+		{
+			"name": "mathjax4",
+			"type": "script",
+			"uri": "https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js",
+			"version": "4",
+			"attributes": {
+				"defer": true
+			}
+		},
+		{
+			"name": "mathjax4.init",
+			"type": "script",
+			"uri": "media/plg_content_jextboxequation/js/mathjax4.init.js",
+			"dependencies": ["mathjax4"],
+			"attributes": {
+				"defer": true
+			}
+		},
+		{
+			"name": "latex2js.css",
+			"type": "style",
+			"uri": "media/plg_content_jextboxequation/latex2html5/latex2js.css"
+		},
+		{
+			"name": "latex2html5.bundle",
+			"type": "script",
+			"uri": "media/plg_content_jextboxequation/latex2html5/latex2html5.bundle.js",
+			"dependencies": ["mathjax4"],
+			"attributes": {
+				"defer": true
+			}
+		},
+		{
+			"name": "latex2html5.init",
+			"type": "script",
+			"uri": "media/plg_content_jextboxequation/js/latex2html5.init.js",
+			"dependencies": ["latex2html5.bundle"],
+			"attributes": {
+				"defer": true
+			}
+		}
+	]
+}

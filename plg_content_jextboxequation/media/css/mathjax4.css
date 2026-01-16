@@ -1,0 +1,8 @@
+mjx-container:focus, mjx-container * {
+	outline: none !important; 
+	-webkit-tap-highlight-color: transparent;
+}
+mjx-container {
+	cursor: default;
+	-webkit-touch-callout: none;
+}

@@ -6,7 +6,7 @@
 	<copyright>Copyright (C) 2017-2026 Makhgal Ganbold</copyright>
 	<license>GNU/GPL License - https://www.gnu.org/licenses/gpl.html</license>
 	<authorUrl>www.galaa.net</authorUrl>
-	<version>3.0.0</version>
+	<version>3.1.0</version>
 	<description>The update installer plugin for the JExtBOX Equation extension.</description>
 	<namespace path="src">JExtBOX\Plugin\Installer\JExtBOXEquation</namespace>
 	<files>
